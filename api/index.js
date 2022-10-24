@@ -1,7 +1,8 @@
 export default function handler(request, response) {
-  response.status(200).json({
-    status: "registered",
-    hostname: "ensure360-demo",
-    ip: "172.16.130.199"
-  });
+  if (request.query["mac"] === "aa:bb:cc:dd:ee:ff") {
+    response.status(200).send("ensure360-demo 172.16.130.199");
+  }
+  else {
+    response.status(404).send("mac address not found");
+  }
 }
